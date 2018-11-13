@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var motion = Vector2()
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
