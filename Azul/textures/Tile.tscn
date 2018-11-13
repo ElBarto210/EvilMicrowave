@@ -1,0 +1,237 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://textures/suelo.png" type="Texture" id=1]
+[ext_resource path="res://textures/wall.png" type="Texture" id=2]
+[ext_resource path="res://textures/wall2.png" type="Texture" id=3]
+[ext_resource path="res://textures/top.png" type="Texture" id=4]
+[ext_resource path="res://textures/floor2.png" type="Texture" id=5]
+[ext_resource path="res://textures/floor.png" type="Texture" id=6]
+[ext_resource path="res://textures/esquina2.png" type="Texture" id=7]
+[ext_resource path="res://textures/esquina.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8.05629, 7.4773 )
+
+[node name="Tile" type="Node"]
+
+[node name="00" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="00" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="forma" type="CollisionShape2D" parent="00/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 7.3416 )
+shape = SubResource( 1 )
+
+[node name="01" type="Sprite" parent="." index="1"]
+
+position = Vector2( 32, 0 )
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="01" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="forma" type="CollisionShape2D" parent="01/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 7.3416 )
+shape = SubResource( 1 )
+
+[node name="02" type="Sprite" parent="." index="2"]
+
+position = Vector2( 64, 0 )
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="02" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="forma" type="CollisionShape2D" parent="02/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 7.3416 )
+shape = SubResource( 1 )
+
+[node name="03" type="Sprite" parent="." index="3"]
+
+position = Vector2( 0, 32 )
+texture = ExtResource( 4 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="03" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="forma" type="CollisionShape2D" parent="03/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 7.3416 )
+shape = SubResource( 1 )
+
+[node name="04" type="Sprite" parent="." index="4"]
+
+position = Vector2( 32, 32 )
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="04" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="forma" type="CollisionShape2D" parent="04/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 7.3416 )
+shape = SubResource( 1 )
+
+[node name="05" type="Sprite" parent="." index="5"]
+
+position = Vector2( 64, 32 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="05" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="forma" type="CollisionShape2D" parent="05/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 7.3416 )
+shape = SubResource( 1 )
+
+[node name="06" type="Sprite" parent="." index="6"]
+
+position = Vector2( 0, 64 )
+texture = ExtResource( 7 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="06" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="forma" type="CollisionShape2D" parent="06/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 7.3416 )
+shape = SubResource( 1 )
+
+[node name="07" type="Sprite" parent="." index="7"]
+
+position = Vector2( 32, 64 )
+texture = ExtResource( 8 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="Area2D" parent="07" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="forma" type="CollisionShape2D" parent="07/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 7.3416 )
+shape = SubResource( 1 )
+
+
