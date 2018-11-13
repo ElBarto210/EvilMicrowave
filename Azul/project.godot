@@ -16,6 +16,11 @@ boot_splash/image="res://textures/logo2.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
 
+[debug]
+
+settings/crash_handler/message="Seems that something went wrong! Sorry!! :("
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1080
