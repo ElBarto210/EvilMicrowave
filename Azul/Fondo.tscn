@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://textures/texts/EnviromentalText.gd" type="Script" id=1]
 [ext_resource path="res://textures/texts/title.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://textures/tile.tres" type="TileSet" id=6]
 [ext_resource path="res://textures/pwerup.png" type="Texture" id=7]
 [ext_resource path="res://activador00.gd" type="Script" id=8]
+[ext_resource path="res://particlesred.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -24,18 +25,18 @@ extents = Vector2( 7.1297, 16.0695 )
 custom_solver_bias = 0.0
 extents = Vector2( 3.12653, 6.79313 )
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=4]
 
 offsets = PoolRealArray( 0, 1 )
 colors = PoolColorArray( 1, 0.65625, 0, 0.403333, 0.9375, 0.410156, 0.0585938, 0 )
 
-[sub_resource type="GradientTexture" id=6]
+[sub_resource type="GradientTexture" id=5]
 
 flags = 4
-gradient = SubResource( 5 )
+gradient = SubResource( 4 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=6]
 
 render_priority = 0
 trail_divisor = 1
@@ -64,7 +65,7 @@ angle = 180.0
 angle_random = 0.0
 scale = 1.0
 scale_random = 0.0
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 5 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -74,9 +75,8 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Color", "Gravity", "Initial Velocity" ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 
-resource_name = "floating"
 length = 2.0
 loop = true
 step = 0.01
@@ -151,7 +151,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -262145, 2, 0, -196609, 2, 0, -131073, 2, 0, -65537, 2, 0, -1, 2, 0, 65535, 2, 0, 131071, 2, 0, 196607, 2, 0, 262143, 2, 0, 327679, 2, 0, 262162, 3, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0, 327716, 0, 0, 327717, 0, 0, 327721, 0, 0, 327722, 0, 0, 327723, 0, 0, 327724, 0, 0, 327725, 0, 0, 327726, 0, 0, 327727, 0, 0 )
+tile_data = PoolIntArray( -524289, 2, 0, -458753, 2, 0, -393217, 2, 0, -327681, 2, 0, -262145, 2, 0, -327614, 1, 0, -196609, 2, 0, -262078, 1, 0, -131073, 2, 0, -196542, 1, 0, -196539, 5, 0, -65538, 5, 0, -65537, 2, 0, -131006, 1, 0, -1, 2, 0, -65470, 1, 0, 65531, 4, 0, 65535, 2, 0, 66, 1, 0, 131071, 2, 0, 65602, 1, 0, 65604, 4, 0, 196607, 2, 0, 131120, 7, 0, 131121, 6, 0, 131138, 1, 0, 262141, 4, 0, 262143, 2, 0, 196656, 1, 0, 196657, 2, 0, 196674, 1, 0, 196675, 5, 0, 327679, 2, 0, 262162, 3, 0, 262192, 1, 0, 262193, 2, 0, 262210, 1, 0, 262213, 4, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0, 327716, 0, 0, 327717, 0, 0, 327721, 0, 0, 327722, 0, 0, 327723, 0, 0, 327724, 0, 0, 327725, 0, 0, 327726, 0, 0, 327727, 0, 0, 327728, 0, 0, 327729, 0, 0, 327730, 0, 0, 327731, 0, 0, 327732, 0, 0, 327733, 0, 0, 327734, 0, 0, 327735, 0, 0, 327736, 0, 0, 327737, 6, 0, 327740, 7, 0, 327741, 0, 0, 327742, 0, 0, 327743, 0, 0, 327744, 0, 0, 327745, 0, 0, 327746, 0, 0, 393273, 2, 0, 393276, 1, 0, 458809, 2, 0, 458812, 1, 0, 524343, 5, 0, 524345, 2, 0, 524348, 1, 0, 589881, 2, 0, 589884, 1, 0, 655417, 2, 0, 655420, 1, 0, 720953, 2, 0, 720956, 1, 0, 786489, 2, 0, 786492, 1, 0, 786495, 5, 0, 852024, 4, 0, 852025, 2, 0, 852028, 1, 0, 917561, 2, 0, 917564, 1, 0, 983097, 2, 0, 983100, 1, 0, 1048633, 2, 0, 1048636, 1, 0, 1114169, 2, 0, 1114172, 1, 0, 1179705, 2, 0, 1179708, 1, 0, 1245241, 2, 0, 1245244, 1, 0, 1310777, 2, 0, 1310780, 1, 0, 1310782, 4, 0, 1376313, 2, 0, 1376316, 1, 0, 1441849, 2, 0, 1441852, 1, 0, 1507384, 4, 0, 1507385, 2, 0, 1507388, 1, 0, 1572921, 2, 0, 1572924, 1, 0, 1638457, 2, 0, 1638460, 1, 0, 1703993, 2, 0, 1703996, 1, 0, 1769529, 2, 0, 1769532, 1, 0, 1835065, 2, 0, 1835068, 1, 0, 1900601, 2, 0, 1900604, 1, 0, 1966137, 2, 0, 1966140, 1, 0, 1966145, 5, 0, 2031673, 2, 0, 2031676, 1, 0, 2097209, 2, 0, 2097212, 1, 0, 2162745, 2, 0, 2162748, 1, 0, 2228281, 2, 0, 2228284, 1, 0, 2293815, 5, 0, 2293817, 2, 0, 2293820, 1, 0, 2359353, 2, 0, 2359356, 1, 0, 2359360, 4, 0, 2424889, 2, 0, 2424892, 1, 0, 2424900, 4, 0, 2490425, 2, 0, 2490428, 1, 0, 2490429, 5, 0, 2490438, 1, 0, 2555961, 1073741830, 0, 2555964, 1073741831, 0, 2555974, 1, 0, 2621510, 1, 0, 2687046, 1, 0, 2752582, 1, 0, 2818118, 1, 0, 2883632, 0, 0, 2883633, 0, 0, 2883634, 0, 0, 2883635, 0, 0, 2883636, 0, 0, 2883637, 0, 0, 2883638, 0, 0, 2883639, 0, 0, 2883640, 0, 0, 2883641, 0, 0, 2883642, 0, 0, 2883643, 0, 0, 2883644, 0, 0, 2883645, 0, 0, 2883646, 0, 0, 2883647, 0, 0, 2883648, 0, 0, 2883649, 0, 0, 2883650, 0, 0, 2883651, 0, 0, 2883652, 0, 0, 2883653, 0, 0 )
 _sections_unfolded = [ "Cell" ]
 __meta__ = {
 "_edit_lock_": true
@@ -172,6 +172,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/dead00" index="0"]
 
@@ -190,6 +193,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/dead01" index="0"]
 
@@ -207,12 +213,34 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/res00" index="0"]
 
 shape = SubResource( 2 )
 
-[node name="res01" type="Area2D" parent="Objects" index="3"]
+[node name="res02" type="Area2D" parent="Objects" index="3"]
+
+editor/display_folded = true
+position = Vector2( 487.506, 61.6123 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/res02" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="res01" type="Area2D" parent="Objects" index="4"]
 
 editor/display_folded = true
 position = Vector2( 578.158, 62.6742 )
@@ -223,13 +251,36 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/res01" index="0"]
 
 position = Vector2( 0.615845, -0.306755 )
 shape = SubResource( 2 )
 
-[node name="activador00" type="Area2D" parent="Objects" index="4"]
+[node name="res03" type="Area2D" parent="Objects" index="5"]
+
+editor/display_folded = true
+position = Vector2( 684.093, 62.6742 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/res03" index="0"]
+
+position = Vector2( 0.615845, -0.306755 )
+shape = SubResource( 2 )
+
+[node name="activador00" type="Area2D" parent="Objects" index="6"]
 
 editor/display_folded = true
 position = Vector2( 526.141, 69.6236 )
@@ -252,38 +303,13 @@ texture = ExtResource( 7 )
 script = ExtResource( 8 )
 _sections_unfolded = [ "Offset" ]
 
-[node name="Particles2D" type="Particles2D" parent="Objects/activador00/Sprite" index="0"]
-
-show_behind_parent = true
-position = Vector2( -0.473389, -5.04895 )
-rotation = 0.174533
-scale = Vector2( 1, 1 )
-emitting = true
-amount = 100
-lifetime = 3.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = SubResource( 7 )
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-_sections_unfolded = [ "Process Material", "Time", "Transform", "Visibility" ]
+[node name="Particles2D" parent="Objects/activador00/Sprite" index="0" instance=ExtResource( 9 )]
 
 [node name="Particles2D2" type="Particles2D" parent="Objects/activador00/Sprite" index="1"]
 
 show_behind_parent = true
 position = Vector2( 0.570435, 5.15752 )
 rotation = 3.31613
-scale = Vector2( 1, 1 )
 emitting = true
 amount = 100
 lifetime = 3.0
@@ -297,7 +323,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 7 )
+process_material = SubResource( 6 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -311,7 +337,7 @@ autoplay = "floating"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 0.5
-anims/floating = SubResource( 4 )
+anims/floating = SubResource( 7 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
@@ -323,7 +349,11 @@ _sections_unfolded = [ "Playback Options" ]
 
 [connection signal="body_entered" from="Objects/res00" to="Player" method="_on_res00_body_entered"]
 
+[connection signal="body_entered" from="Objects/res02" to="Player" method="_on_res00_body_entered"]
+
 [connection signal="body_entered" from="Objects/res01" to="Player" method="_on_res00_body_entered"]
+
+[connection signal="body_entered" from="Objects/res03" to="Player" method="_on_res00_body_entered"]
 
 [connection signal="body_entered" from="Objects/activador00" to="Objects/activador00/Sprite" method="_on_activador00_body_entered"]
 

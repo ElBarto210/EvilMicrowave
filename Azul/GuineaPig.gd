@@ -44,11 +44,13 @@ func _physics_process(delta):
 	#Animate
 	animate()
 	setypos()
-
 	
 	#Movement
 	motion.y += grav
 	motion = move_and_slide(motion, normal)
+	
+	#Barra
+	barraupdater()
 	pass
 	
 	
@@ -81,6 +83,9 @@ func _input(event):                   #Cuando hagas el movimiento, solo asegurat
 	
 	if Input.is_action_just_pressed("ui_act3") && veneno3:
 		veneno3()
+		
+	if Input.is_action_just_pressed("ui_cancel"):
+    	OS.window_fullscreen = !OS.window_fullscreen
 	pass
 
 ###################################################################################################
@@ -136,14 +141,17 @@ func veneno3():
 	$Hud/Group/J3.set_modulate(disabled)
 	pass
 	
-	
-
-
 
 ###################################################################################################
 
 func _reset():                                       #reset de stats (veneno1)
 	$Hud/Group/J.set_modulate(enabled)
+	
+	if dirx == right:                                #esto soluciona el bug de correr infinito
+		motion.x = 42
+	if dirx == left:
+		motion.x = -42
+	
 	salto = -150
 	vel = 42
 	timer = -1
@@ -154,6 +162,7 @@ func _reset():                                       #reset de stats (veneno1)
 func activate(veneno):                               #activadores para los venenos
 	if veneno == 1:
 		$Hud/Group/J.visible = true
+		$Hud/Group/Toxic.visible = true
 		veneno1 = true
 	elif veneno == 2:
 		$Hud/Group/J2.visible = true
@@ -179,4 +188,13 @@ func _on_dead_body_entered(body):                   #Impactas objeto caida
 func _on_res00_body_entered(body):                  #Impactas respawner
 	resx = position.x
 	resy = position.y
+	pass
+
+################################################# BARRA #####################################################
+
+func barraupdater():
+	if $Hud/Group/Toxic.value < toxicity:
+		$Hud/Group/Toxic.value += 2
+	elif $Hud/Group/Toxic.value > toxicity:
+		$Hud/Group/Toxic.value -= 2
 	pass

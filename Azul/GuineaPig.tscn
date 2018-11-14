@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://GuineaPig.gd" type="Script" id=1]
 [ext_resource path="res://textures/player_idle.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://textures/hud/k.png" type="Texture" id=12]
 [ext_resource path="res://textures/hud/Icon.4_75.png" type="Texture" id=13]
 [ext_resource path="res://textures/hud/l.png" type="Texture" id=14]
+[ext_resource path="res://textures/hud/bar2.png" type="Texture" id=15]
+[ext_resource path="res://textures/hud/bar.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -43,6 +45,44 @@ animations = [ {
 
 custom_solver_bias = 0.0
 extents = Vector2( 2.36137, 1.84169 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 100, 10 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 100, 10 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -125,13 +165,24 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Group" type="Node2D" parent="Hud" index="0"]
+[node name="Group" type="Control" parent="Hud" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
 [node name="J" type="Sprite" parent="Hud/Group" index="0"]
 
 editor/display_folded = true
 visible = false
-position = Vector2( 456.625, 643.687 )
+position = Vector2( 476.625, 54.687 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -146,7 +197,7 @@ texture = ExtResource( 10 )
 
 editor/display_folded = true
 visible = false
-position = Vector2( 529.625, 643.687 )
+position = Vector2( 549.625, 54.687 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 11 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -161,7 +212,7 @@ texture = ExtResource( 12 )
 
 editor/display_folded = true
 visible = false
-position = Vector2( 600.625, 643.687 )
+position = Vector2( 620.625, 54.687 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 13 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -171,5 +222,34 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 position = Vector2( 3.21899, 297.928 )
 scale = Vector2( 3.63129, 3.68396 )
 texture = ExtResource( 14 )
+
+[node name="Toxic" type="ProgressBar" parent="Hud/Group" index="3"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 368.0
+margin_top = 657.0
+margin_right = 731.0
+margin_bottom = 699.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 30.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent", "Visibility", "custom_styles" ]
 
 

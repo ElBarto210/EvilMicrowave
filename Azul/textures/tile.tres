@@ -28,7 +28,7 @@ extents = Vector2( 8.05629, 7.4773 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 7.94344, 7.3416 )
+"shape_transform": Transform2D( 1, 0, 0, 1, 7.94344, 8.3416 )
 } ]
 1/name = "01"
 1/texture = ExtResource( 2 )
