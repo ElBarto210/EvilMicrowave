@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://textures/texts/EnviromentalText.gd" type="Script" id=1]
 [ext_resource path="res://textures/texts/title.png" type="Texture" id=2]
@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35.1868, 10 )
+extents = Vector2( 45.2465, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -23,6 +23,56 @@ extents = Vector2( 7.1297, 16.0695 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 3.12653, 6.79313 )
+
+[sub_resource type="Gradient" id=5]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 1, 0.65625, 0, 0.403333, 0.9375, 0.410156, 0.0585938, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+
+flags = 4
+gradient = SubResource( 5 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=7]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 3, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 1.0
+damping = 0.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 0.0
+color_ramp = SubResource( 6 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Color", "Gravity", "Initial Velocity" ]
 
 [sub_resource type="Animation" id=4]
 
@@ -101,13 +151,15 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -262145, 2, 0, -196609, 2, 0, -131073, 2, 0, -65537, 2, 0, -1, 2, 0, 65535, 2, 0, 131071, 2, 0, 196607, 2, 0, 262143, 2, 0, 327679, 2, 0, 262162, 3, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0, 327716, 0, 0, 327717, 0, 0 )
+tile_data = PoolIntArray( -262145, 2, 0, -196609, 2, 0, -131073, 2, 0, -65537, 2, 0, -1, 2, 0, 65535, 2, 0, 131071, 2, 0, 196607, 2, 0, 262143, 2, 0, 327679, 2, 0, 262162, 3, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0, 327716, 0, 0, 327717, 0, 0, 327721, 0, 0, 327722, 0, 0, 327723, 0, 0, 327724, 0, 0, 327725, 0, 0, 327726, 0, 0, 327727, 0, 0 )
 _sections_unfolded = [ "Cell" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Objects" type="Node" parent="." index="3"]
+
+editor/display_folded = true
 
 [node name="dead00" type="Area2D" parent="Objects" index="0"]
 
@@ -126,7 +178,25 @@ audio_bus_name = "Master"
 position = Vector2( -0.528564, 0.912056 )
 shape = SubResource( 1 )
 
-[node name="res00" type="Area2D" parent="Objects" index="1"]
+[node name="dead01" type="Area2D" parent="Objects" index="1"]
+
+editor/display_folded = true
+position = Vector2( 634.631, 128.419 )
+scale = Vector2( 1.01556, 1 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/dead01" index="0"]
+
+position = Vector2( -1.08463, 1.21883 )
+shape = SubResource( 1 )
+
+[node name="res00" type="Area2D" parent="Objects" index="2"]
 
 editor/display_folded = true
 position = Vector2( 388.686, 61.0853 )
@@ -142,8 +212,26 @@ audio_bus_name = "Master"
 
 shape = SubResource( 2 )
 
-[node name="activador00" type="Area2D" parent="Objects" index="2"]
+[node name="res01" type="Area2D" parent="Objects" index="3"]
 
+editor/display_folded = true
+position = Vector2( 578.158, 62.6742 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/res01" index="0"]
+
+position = Vector2( 0.615845, -0.306755 )
+shape = SubResource( 2 )
+
+[node name="activador00" type="Area2D" parent="Objects" index="4"]
+
+editor/display_folded = true
 position = Vector2( 526.141, 69.6236 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -164,6 +252,58 @@ texture = ExtResource( 7 )
 script = ExtResource( 8 )
 _sections_unfolded = [ "Offset" ]
 
+[node name="Particles2D" type="Particles2D" parent="Objects/activador00/Sprite" index="0"]
+
+show_behind_parent = true
+position = Vector2( -0.473389, -5.04895 )
+rotation = 0.174533
+scale = Vector2( 1, 1 )
+emitting = true
+amount = 100
+lifetime = 3.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 7 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Process Material", "Time", "Transform", "Visibility" ]
+
+[node name="Particles2D2" type="Particles2D" parent="Objects/activador00/Sprite" index="1"]
+
+show_behind_parent = true
+position = Vector2( 0.570435, 5.15752 )
+rotation = 3.31613
+scale = Vector2( 1, 1 )
+emitting = true
+amount = 100
+lifetime = 3.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 7 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Process Material", "Time", "Transform", "Visibility" ]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/activador00" index="2"]
 
 root_node = NodePath("..")
@@ -179,7 +319,11 @@ _sections_unfolded = [ "Playback Options" ]
 
 [connection signal="body_entered" from="Objects/dead00" to="Player" method="_on_dead_body_entered"]
 
+[connection signal="body_entered" from="Objects/dead01" to="Player" method="_on_dead_body_entered"]
+
 [connection signal="body_entered" from="Objects/res00" to="Player" method="_on_res00_body_entered"]
+
+[connection signal="body_entered" from="Objects/res01" to="Player" method="_on_res00_body_entered"]
 
 [connection signal="body_entered" from="Objects/activador00" to="Objects/activador00/Sprite" method="_on_activador00_body_entered"]
 

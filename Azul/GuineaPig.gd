@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+#Hud
+var disabled = Color(1,1,1,0.2)
+var enabled = Color(1,1,1,1)
+
 #Movimiento
 export var normal = Vector2(0, -1)
 export var grav = 10
@@ -70,6 +74,14 @@ func _input(event):                   #Cuando hagas el movimiento, solo asegurat
 	if Input.is_action_just_pressed("ui_act1") && veneno1:
 		veneno1()
 	pass
+	
+	if Input.is_action_just_pressed("ui_act2") && veneno2:
+		veneno2()
+	pass
+	
+	if Input.is_action_just_pressed("ui_act3") && veneno3:
+		veneno3()
+	pass
 
 ###################################################################################################
 
@@ -109,10 +121,19 @@ func animate():                                      #Animaciones
 ###################################################################################################
 
 func veneno1():                                      #Venenos
+	$Hud/Group/J.set_modulate(disabled)
 	vel = 84
 	salto = -250
 	timer = 40
 	toxicity = 20
+	pass
+	
+func veneno2():
+	$Hud/Group/J2.set_modulate(disabled)
+	pass
+	
+func veneno3():
+	$Hud/Group/J3.set_modulate(disabled)
 	pass
 	
 	
@@ -121,12 +142,11 @@ func veneno1():                                      #Venenos
 
 ###################################################################################################
 
-func _reset():                                       #reset de stats
-
+func _reset():                                       #reset de stats (veneno1)
+	$Hud/Group/J.set_modulate(enabled)
 	salto = -150
 	vel = 42
 	timer = -1
-	print("reset", vel)
 	
 
 ###################################################################################################
