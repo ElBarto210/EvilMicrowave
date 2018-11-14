@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://textures/texts/EnviromentalText.gd" type="Script" id=1]
 [ext_resource path="res://textures/texts/title.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://textures/texts/move.png" type="Texture" id=4]
 [ext_resource path="res://GuineaPig.tscn" type="PackedScene" id=5]
 [ext_resource path="res://textures/tile.tres" type="TileSet" id=6]
+[ext_resource path="res://textures/pwerup.png" type="Texture" id=7]
+[ext_resource path="res://activador00.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -16,6 +18,30 @@ extents = Vector2( 35.1868, 10 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 7.1297, 16.0695 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 3.12653, 6.79313 )
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "floating"
+length = 2.0
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1, 1.3, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 526.141, 69.6236 ), Vector2( 526.141, 67.6236 ), Vector2( 526.141, 62.6236 ), Vector2( 526.141, 60.6236 ), Vector2( 526.141, 62.6236 ), Vector2( 526.141, 67.6236 ), Vector2( 526.141, 69.6236 ) ]
+}
 
 [node name="Mundo_00" type="Node" index="0"]
 
@@ -116,10 +142,45 @@ audio_bus_name = "Master"
 
 shape = SubResource( 2 )
 
+[node name="activador00" type="Area2D" parent="Objects" index="2"]
+
+position = Vector2( 526.141, 69.6236 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/activador00" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Objects/activador00" index="1"]
+
+texture = ExtResource( 7 )
+script = ExtResource( 8 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/activador00" index="2"]
+
+root_node = NodePath("..")
+autoplay = "floating"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 0.5
+anims/floating = SubResource( 4 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
 [connection signal="timeout" from="EnviromentalText/movetime" to="EnviromentalText" method="_on_movetime_timeout"]
 
 [connection signal="body_entered" from="Objects/dead00" to="Player" method="_on_dead_body_entered"]
 
 [connection signal="body_entered" from="Objects/res00" to="Player" method="_on_res00_body_entered"]
+
+[connection signal="body_entered" from="Objects/activador00" to="Objects/activador00/Sprite" method="_on_activador00_body_entered"]
 
 

@@ -6,7 +6,7 @@ export var grav = 10
 export var vel = 42
 export var salto = -150
 export var toxicity = 0
-var timer = 0
+var timer = -1
 var motion = Vector2()
 
 #Animaciones
@@ -23,6 +23,7 @@ var resx = 0
 var resy = 0
 
 func _ready():
+	vel = 42
 	dirx = idle
 	diry = none
 	set_process_input(true)
@@ -31,10 +32,9 @@ func _ready():
 func _physics_process(delta):
 	
 	#Counters
-	if timer != 0:
+	if timer > 0:
 		timer -= 1	
-		print (timer)
-	else:
+	elif timer == 0:
 		_reset()
 		
 	#Animate
@@ -122,8 +122,11 @@ func veneno1():                                      #Venenos
 ###################################################################################################
 
 func _reset():                                       #reset de stats
+
 	salto = -150
 	vel = 42
+	timer = -1
+	print("reset", vel)
 	
 
 ###################################################################################################
