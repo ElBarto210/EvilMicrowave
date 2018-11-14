@@ -3,8 +3,10 @@ extends KinematicBody2D
 #Movimiento
 export var normal = Vector2(0, -1)
 export var grav = 10
-export var vel = 70
-export var salto = -200
+export var vel = 42
+export var salto = -150
+export var toxicity = 0
+var timer = 0
 var motion = Vector2()
 
 #Animaciones
@@ -19,6 +21,13 @@ func _ready():
 
 func _physics_process(delta):
 	
+	#Counters
+	if timer != 0:
+		timer -= 1	
+		print (timer)
+	else:
+		_reset()
+		
 	#Animate
 	animate()
 	setypos()
@@ -30,7 +39,7 @@ func _physics_process(delta):
 	pass
 	
 	
-#####################################################################################################
+###################################################################################################
 
 func _input(event):                   #Cuando hagas el movimiento, solo asegurate de que en cada momento del movimiento estableces
                                       #la dirección del movimento para que las animaciones sigan funcionando
@@ -48,9 +57,12 @@ func _input(event):                   #Cuando hagas el movimiento, solo asegurat
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = salto
+			
+	if Input.is_action_just_pressed("ui_down"):
+		veneno1()
 	pass
 
-####################################################################################################
+###################################################################################################
 
 func setypos():                                    #Cambia el estado de dirección vertical
 	if motion.y > 0:
@@ -84,3 +96,24 @@ func animate():                                      #Animaciones
 		if diry == none:
 			$Anim.play("default")
 	pass
+	
+###################################################################################################
+
+func veneno1():                                      #Venenos
+	vel = 84
+	salto = -250
+	timer = 40
+	toxicity = 20
+	pass
+	
+	
+
+
+
+###################################################################################################
+
+func _reset():                                       #reset de stats
+	salto = -150
+	vel = 42
+	
+

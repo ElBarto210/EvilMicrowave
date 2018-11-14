@@ -2,10 +2,10 @@
 
 [ext_resource path="res://GuineaPig.gd" type="Script" id=1]
 [ext_resource path="res://textures/player_idle.png" type="Texture" id=2]
-[ext_resource path="res://textures/jumpdown2.png" type="Texture" id=3]
-[ext_resource path="res://textures/jumpdown.png" type="Texture" id=4]
-[ext_resource path="res://textures/player_01.png" type="Texture" id=5]
-[ext_resource path="res://textures/player_02.png" type="Texture" id=6]
+[ext_resource path="res://textures/player_01.png" type="Texture" id=3]
+[ext_resource path="res://textures/player_02.png" type="Texture" id=4]
+[ext_resource path="res://textures/jumpdown2.png" type="Texture" id=5]
+[ext_resource path="res://textures/jumpdown.png" type="Texture" id=6]
 [ext_resource path="res://textures/jumpup.png" type="Texture" id=7]
 [ext_resource path="res://textures/jumpup2.png" type="Texture" id=8]
 
@@ -24,12 +24,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "jumpdown",
+"name": "run",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "run",
+"name": "jumpdown",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
@@ -53,7 +53,8 @@ __meta__ = {
 normal = Vector2( 0, -1 )
 grav = 8
 vel = 85
-salto = -200
+salto = -150
+toxicity = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
