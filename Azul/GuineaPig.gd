@@ -13,6 +13,15 @@ var motion = Vector2()
 enum dirx {right, left, idle}
 enum diry {up, down, none}
 
+#Activadores venenos
+var veneno1 = false
+var veneno2 = false
+var veneno3 = false
+
+#Posicion del respawn más cercano
+var resx = 0
+var resy = 0
+
 func _ready():
 	dirx = idle
 	diry = none
@@ -58,7 +67,7 @@ func _input(event):                   #Cuando hagas el movimiento, solo asegurat
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = salto
 			
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("ui_act1") && veneno1:
 		veneno1()
 	pass
 
@@ -117,3 +126,34 @@ func _reset():                                       #reset de stats
 	vel = 42
 	
 
+###################################################################################################
+
+func activate(veneno):                               #activadores para los venenos
+	if veneno == 1:
+		$Hud/Group/J.visible = true
+		veneno1 = true
+	elif veneno == 2:
+		$Hud/Group/J2.visible = true
+		veneno2 = true
+	elif veneno == 3:
+		$Hud/Group/J3.visible = true
+		veneno3 = true
+	pass
+	
+############################################### RESPAWN ###################################################
+
+func setpos(posx, posy):                            #Mueve el jugador a la posición por parametro
+	position.x = posx
+	position.y = posy
+	pass
+
+
+func _on_dead_body_entered(body):                   #Impactas objeto caida
+	setpos(resx, resy)
+	pass
+
+
+func _on_res00_body_entered(body):                  #Impactas respawner
+	resx = position.x
+	resy = position.y
+	pass

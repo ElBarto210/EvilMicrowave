@@ -25,19 +25,16 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="hitbox" type="Area2D" parent="00" index="0"]
+[node name="hitbox" type="StaticBody2D" parent="00" index="0"]
 
 editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-__meta__ = {
-"_edit_lock_": true
-}
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="00/hitbox" index="0"]
 
@@ -55,16 +52,16 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="hitbox" type="Area2D" parent="01" index="0"]
+[node name="hitbox" type="StaticBody2D" parent="01" index="0"]
 
 editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="01/hitbox" index="0"]
 
@@ -82,16 +79,16 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="hitbox" type="Area2D" parent="02" index="0"]
+[node name="hitbox" type="StaticBody2D" parent="02" index="0"]
 
 editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="02/hitbox" index="0"]
 
@@ -109,21 +106,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="hitbox" type="Area2D" parent="03" index="0"]
+[node name="hitbox" type="StaticBody2D" parent="03" index="0"]
 
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="03/hitbox" index="0"]
 
 visible = false
-position = Vector2( 7.94344, 7.3416 )
+position = Vector2( 7.94344, 8.3416 )
 shape = SubResource( 1 )
 
 [node name="04" type="Sprite" parent="." index="4"]
@@ -136,16 +132,17 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="hitbox" type="Area2D" parent="04" index="0"]
+[node name="hitbox" type="StaticBody2D" parent="04" index="0"]
 
 editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+visible = false
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="04/hitbox" index="0"]
 
@@ -163,16 +160,17 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="hitbox" type="Area2D" parent="05" index="0"]
+[node name="hitbox" type="StaticBody2D" parent="05" index="0"]
 
 editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+visible = false
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="05/hitbox" index="0"]
 
@@ -190,21 +188,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="hitbox" type="Area2D" parent="06" index="0"]
+[node name="hitbox" type="StaticBody2D" parent="06" index="0"]
 
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="06/hitbox" index="0"]
 
 visible = false
-position = Vector2( 7.94344, 7.3416 )
+position = Vector2( 7.94344, 8.3416 )
 shape = SubResource( 1 )
 
 [node name="07" type="Sprite" parent="." index="7"]
@@ -217,21 +214,21 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="hitbox" type="Area2D" parent="07" index="0"]
+[node name="hitbox" type="StaticBody2D" parent="07" index="0"]
 
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="07/hitbox" index="0"]
 
 visible = false
-position = Vector2( 7.94344, 7.3416 )
+position = Vector2( 7.94344, 8.3416 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 

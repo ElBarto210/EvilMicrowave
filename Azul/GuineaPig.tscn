@@ -1,18 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://GuineaPig.gd" type="Script" id=1]
 [ext_resource path="res://textures/player_idle.png" type="Texture" id=2]
-[ext_resource path="res://textures/player_01.png" type="Texture" id=3]
-[ext_resource path="res://textures/player_02.png" type="Texture" id=4]
-[ext_resource path="res://textures/jumpdown2.png" type="Texture" id=5]
-[ext_resource path="res://textures/jumpdown.png" type="Texture" id=6]
-[ext_resource path="res://textures/jumpup.png" type="Texture" id=7]
-[ext_resource path="res://textures/jumpup2.png" type="Texture" id=8]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 2.37481, 1.89107 )
+[ext_resource path="res://textures/jumpdown2.png" type="Texture" id=3]
+[ext_resource path="res://textures/jumpdown.png" type="Texture" id=4]
+[ext_resource path="res://textures/jumpup.png" type="Texture" id=5]
+[ext_resource path="res://textures/jumpup2.png" type="Texture" id=6]
+[ext_resource path="res://textures/player_01.png" type="Texture" id=7]
+[ext_resource path="res://textures/player_02.png" type="Texture" id=8]
+[ext_resource path="res://textures/hud/Icon.2_60.png" type="Texture" id=9]
+[ext_resource path="res://textures/hud/Icon.2_69.png" type="Texture" id=10]
+[ext_resource path="res://textures/hud/Icon.4_75.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -24,21 +22,26 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "run",
+"name": "jumpdown",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "jumpdown",
+"name": "jumpup",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "jumpup",
+"name": "run",
 "speed": 5.0
 } ]
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2.36137, 1.84169 )
+
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 159.575, 108.963 )
 input_pickable = false
@@ -48,7 +51,8 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 normal = Vector2( 0, -1 )
 grav = 8
@@ -56,14 +60,7 @@ vel = 85
 salto = -150
 toxicity = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
-
-position = Vector2( -0.5, 9 )
-scale = Vector2( 3.11538, 3 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="icon" type="Sprite" parent="." index="1"]
+[node name="icon" type="Sprite" parent="." index="0"]
 
 visible = false
 position = Vector2( -0.318405, 4.54819 )
@@ -74,7 +71,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
 
 offset = Vector2( 0, -10 )
 anchor_mode = 1
@@ -101,7 +98,7 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Smoothing" ]
 
-[node name="Anim" type="AnimatedSprite" parent="." index="3"]
+[node name="Anim" type="AnimatedSprite" parent="." index="2"]
 
 position = Vector2( -0.341034, 4.57372 )
 scale = Vector2( 1.25, 1.25 )
@@ -109,5 +106,47 @@ frames = SubResource( 2 )
 animation = "default"
 playing = true
 _sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+
+position = Vector2( -0.5, 9 )
+scale = Vector2( 3.11538, 3 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Hud" type="CanvasLayer" parent="." index="4"]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Group" type="Node2D" parent="Hud" index="0"]
+
+[node name="J" type="Sprite" parent="Hud/Group" index="0"]
+
+visible = false
+position = Vector2( 456.625, 643.687 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="J2" type="Sprite" parent="Hud/Group" index="1"]
+
+visible = false
+position = Vector2( 529.625, 643.687 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 10 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="J3" type="Sprite" parent="Hud/Group" index="2"]
+
+visible = false
+position = Vector2( 600.625, 643.687 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 11 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 
