@@ -93,7 +93,7 @@ tracks/0/keys = {
 "values": [ Vector2( 526.141, 69.6236 ), Vector2( 526.141, 67.6236 ), Vector2( 526.141, 62.6236 ), Vector2( 526.141, 60.6236 ), Vector2( 526.141, 62.6236 ), Vector2( 526.141, 67.6236 ), Vector2( 526.141, 69.6236 ) ]
 }
 
-[node name="Mundo_00" type="Node" index="0"]
+[node name="Mundo_00" type="Node"]
 
 [node name="EnviromentalText" type="Node" parent="." index="0"]
 
@@ -132,6 +132,8 @@ autostart = true
 position = Vector2( 82.2026, 70.9529 )
 scale = Vector2( 0.592625, 0.592625 )
 grav = 10
+salto = -160
+max_toxicity = 100
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 

@@ -46,7 +46,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 2.36137, 1.84169 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=3]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -65,7 +65,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=4]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -102,6 +102,7 @@ grav = 8
 vel = 85
 salto = -150
 toxicity = 0
+max_toxicity = 100
 
 [node name="icon" type="Sprite" parent="." index="0"]
 
@@ -240,8 +241,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 min_value = 0.0
 max_value = 100.0
 step = 1.0
