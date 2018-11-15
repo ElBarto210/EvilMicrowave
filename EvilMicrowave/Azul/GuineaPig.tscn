@@ -1,0 +1,255 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://GuineaPig.gd" type="Script" id=1]
+[ext_resource path="res://textures/player_idle.png" type="Texture" id=2]
+[ext_resource path="res://textures/jumpup.png" type="Texture" id=3]
+[ext_resource path="res://textures/jumpup2.png" type="Texture" id=4]
+[ext_resource path="res://textures/jumpdown2.png" type="Texture" id=5]
+[ext_resource path="res://textures/jumpdown.png" type="Texture" id=6]
+[ext_resource path="res://textures/player_01.png" type="Texture" id=7]
+[ext_resource path="res://textures/player_02.png" type="Texture" id=8]
+[ext_resource path="res://textures/hud/Icon.2_60.png" type="Texture" id=9]
+[ext_resource path="res://textures/hud/j.png" type="Texture" id=10]
+[ext_resource path="res://textures/hud/Icon.2_69.png" type="Texture" id=11]
+[ext_resource path="res://textures/hud/k.png" type="Texture" id=12]
+[ext_resource path="res://textures/hud/Icon.4_75.png" type="Texture" id=13]
+[ext_resource path="res://textures/hud/l.png" type="Texture" id=14]
+[ext_resource path="res://textures/hud/bar2.png" type="Texture" id=15]
+[ext_resource path="res://textures/hud/bar.png" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "jumpup",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "jumpdown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2.36137, 1.84169 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 100, 10 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 100, 10 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[node name="Player" type="KinematicBody2D"]
+
+position = Vector2( 159.575, 108.963 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+normal = Vector2( 0, -1 )
+grav = 8
+vel = 85
+salto = -150
+toxicity = 0
+
+[node name="icon" type="Sprite" parent="." index="0"]
+
+visible = false
+position = Vector2( -0.318405, 4.54819 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
+
+offset = Vector2( 0, -20 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.15, 0.15 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.03
+drag_margin_top = 0.03
+drag_margin_right = 0.03
+drag_margin_bottom = 0.01
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Smoothing" ]
+
+[node name="Anim" type="AnimatedSprite" parent="." index="2"]
+
+position = Vector2( -0.341034, 4.57372 )
+scale = Vector2( 1.25, 1.25 )
+frames = SubResource( 1 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+
+position = Vector2( -0.5, 9 )
+scale = Vector2( 3.11538, 3 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Hud" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Group" type="Control" parent="Hud" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="J" type="Sprite" parent="Hud/Group" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 476.625, 54.687 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="l" type="Sprite" parent="Hud/Group/J" index="0"]
+
+position = Vector2( -0.755615, 310.932 )
+scale = Vector2( 3.46873, 3.39758 )
+texture = ExtResource( 10 )
+
+[node name="J2" type="Sprite" parent="Hud/Group" index="1"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 549.625, 54.687 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 11 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="l3" type="Sprite" parent="Hud/Group/J2" index="0"]
+
+position = Vector2( 1.88037, 302.787 )
+scale = Vector2( 3.63129, 3.68396 )
+texture = ExtResource( 12 )
+
+[node name="J3" type="Sprite" parent="Hud/Group" index="2"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 620.625, 54.687 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="l2" type="Sprite" parent="Hud/Group/J3" index="0"]
+
+position = Vector2( 3.21899, 297.928 )
+scale = Vector2( 3.63129, 3.68396 )
+texture = ExtResource( 14 )
+
+[node name="Toxic" type="ProgressBar" parent="Hud/Group" index="3"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 368.0
+margin_top = 657.0
+margin_right = 731.0
+margin_bottom = 699.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 30.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent", "Visibility", "custom_styles" ]
+
+
