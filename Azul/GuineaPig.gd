@@ -19,6 +19,7 @@ var mprev3 = Vector2()
 var prev3 = Vector2(0, 0)
 var cantp = true
 var respawn = Vector2()
+var gosht_busters = false
 
 #Animaciones
 enum dirx {right, left, idle}
@@ -48,7 +49,7 @@ func _physics_process(delta):
 		set_modulate(enabled)
 		setpos(resx, resy)
 		toxicity = 0
-		timer = -1
+		timer = 0
 		timer3 = -1
 		_reset()
 	
@@ -63,6 +64,7 @@ func _physics_process(delta):
 	elif timer3 == 0:
 		setpos(prev3.x,prev3.y)
 		set_modulate(enabled)
+		gosht_busters = false
 		timer3 = -1
 		
 	#Animate
@@ -164,10 +166,10 @@ func animate():                                      #Animaciones
 
 func veneno1():                                      #Venenos
 	$Hud/Group/J.set_modulate(disabled)
-	vel = 84
-	salto = -250
+	vel = 120
+	salto = -255
 	timer = 40
-	toxicity += 20
+	toxicity += 10
 	pass
 	
 func veneno2():
@@ -175,34 +177,33 @@ func veneno2():
 	pass
 	
 func veneno3():
-	$Hud/Group/J3.set_modulate(disabled)
-	var gosht_resource = preload("res://gosht.tscn")
-	var gosht = gosht_resource.instance()
-	get_node("..").add_child(gosht)
-	set_modulate(disabled)
-
-	prev3 = position
-	position = position + positionv3 * 30
-	timer3 = 100
-	toxicity += 40
+	if !gosht_busters:
+		gosht_busters = true
+		$Hud/Group/J3.set_modulate(disabled)
+		var gosht_resource = preload("res://gosht.tscn")
+		var gosht = gosht_resource.instance()
+		get_node("..").add_child(gosht)
+		set_modulate(disabled)
+		_control_veneno_3()
+		prev3 = position
+		position = position + positionv3 * 20
+		timer3 = 150
+		toxicity += 40
 	pass
 	
 
 ###################################################################################################
 
 func _reset():                                       #reset de stats (veneno1)
+	
 	$Hud/Group/J.set_modulate(enabled)
-	
-	if dirx == right:                                #esto soluciona el bug de correr infinito
-		motion.x = 42
-	if dirx == left:
-		motion.x = -42
-	
 	salto = -150
-	vel = 42
-	timer = -1
-	
-
+	gosht_busters = false
+	if is_on_floor():
+		vel = 42
+		motion.x = 0	
+		timer = -1
+	pass
 ###################################################################################################
 
 func activate(veneno):                               #activadores para los venenos
@@ -228,6 +229,7 @@ func setpos(posx, posy):                            #Mueve el jugador a la posic
 		set_modulate(enabled)
 	position.x = posx
 	position.y = posy
+	_reset()
 	pass
 
 
