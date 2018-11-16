@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://GuineaPig.gd" type="Script" id=1]
 [ext_resource path="res://textures/player_idle.png" type="Texture" id=2]
@@ -16,6 +16,11 @@
 [ext_resource path="res://textures/hud/l.png" type="Texture" id=14]
 [ext_resource path="res://textures/hud/bar2.png" type="Texture" id=15]
 [ext_resource path="res://textures/hud/bar.png" type="Texture" id=16]
+[ext_resource path="res://sound/jump.wav" type="AudioStream" id=17]
+[ext_resource path="res://sound/death.wav" type="AudioStream" id=18]
+[ext_resource path="res://sound/powerup.wav" type="AudioStream" id=19]
+[ext_resource path="res://sound/poison.wav" type="AudioStream" id=20]
+[ext_resource path="res://sound/Prueba1.wav" type="AudioStream" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -84,7 +89,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 159.575, 108.963 )
 input_pickable = false
@@ -160,6 +165,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Hud" type="CanvasLayer" parent="." index="4"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -168,6 +174,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Group" type="Control" parent="Hud" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -183,7 +190,7 @@ size_flags_vertical = 1
 
 editor/display_folded = true
 visible = false
-position = Vector2( 476.625, 54.687 )
+position = Vector2( 59.625, 59.687 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -198,7 +205,7 @@ texture = ExtResource( 10 )
 
 editor/display_folded = true
 visible = false
-position = Vector2( 549.625, 54.687 )
+position = Vector2( 132.625, 59.687 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 11 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -213,7 +220,7 @@ texture = ExtResource( 12 )
 
 editor/display_folded = true
 visible = false
-position = Vector2( 620.625, 54.687 )
+position = Vector2( 203.625, 59.687 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 13 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -252,5 +259,52 @@ exp_edit = false
 rounded = false
 percent_visible = false
 _sections_unfolded = [ "Percent", "Visibility", "custom_styles" ]
+
+[node name="Sound" type="Node" parent="." index="5"]
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sound" index="0"]
+
+stream = ExtResource( 17 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Death" type="AudioStreamPlayer" parent="Sound" index="1"]
+
+stream = ExtResource( 18 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Poison" type="AudioStreamPlayer" parent="Sound" index="2"]
+
+stream = ExtResource( 19 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="PoisonActivate" type="AudioStreamPlayer" parent="Sound" index="3"]
+
+stream = ExtResource( 20 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Song" type="AudioStreamPlayer" parent="Sound" index="4"]
+
+stream = ExtResource( 21 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

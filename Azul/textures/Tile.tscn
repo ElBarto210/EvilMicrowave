@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://textures/suelo.png" type="Texture" id=1]
 [ext_resource path="res://textures/wall.png" type="Texture" id=2]
@@ -8,6 +8,12 @@
 [ext_resource path="res://textures/floor.png" type="Texture" id=6]
 [ext_resource path="res://textures/esquina2.png" type="Texture" id=7]
 [ext_resource path="res://textures/esquina.png" type="Texture" id=8]
+[ext_resource path="res://textures/sueloEsq.png" type="Texture" id=9]
+[ext_resource path="res://textures/sueloEsqInf.png" type="Texture" id=10]
+[ext_resource path="res://textures/sueloPar.png" type="Texture" id=11]
+[ext_resource path="res://textures/topVar.png" type="Texture" id=12]
+[ext_resource path="res://textures/topBord.png" type="Texture" id=13]
+[ext_resource path="res://textures/negro.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -18,6 +24,7 @@ extents = Vector2( 8.05629, 7.4773 )
 
 [node name="00" type="Sprite" parent="." index="0"]
 
+editor/display_folded = true
 texture = ExtResource( 1 )
 centered = false
 _sections_unfolded = [ "Offset" ]
@@ -37,6 +44,7 @@ bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="00/hitbox" index="0"]
 
+visible = false
 position = Vector2( 7.94344, 8.3416 )
 shape = SubResource( 1 )
 
@@ -230,6 +238,174 @@ friction = 1.0
 bounce = 0.0
 
 [node name="forma" type="CollisionShape2D" parent="07/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 8.3416 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="08" type="Sprite" parent="." index="8"]
+
+editor/display_folded = true
+position = Vector2( 64, 64 )
+texture = ExtResource( 9 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="StaticBody2D" parent="08" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="forma" type="CollisionShape2D" parent="08/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 8.3416 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="09" type="Sprite" parent="." index="9"]
+
+editor/display_folded = true
+position = Vector2( 0, 96 )
+texture = ExtResource( 10 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="StaticBody2D" parent="09" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="forma" type="CollisionShape2D" parent="09/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 8.3416 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="10" type="Sprite" parent="." index="10"]
+
+editor/display_folded = true
+position = Vector2( 32, 96 )
+texture = ExtResource( 11 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="StaticBody2D" parent="10" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="forma" type="CollisionShape2D" parent="10/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 8.3416 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="11" type="Sprite" parent="." index="11"]
+
+editor/display_folded = true
+position = Vector2( 64, 96 )
+texture = ExtResource( 12 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="StaticBody2D" parent="11" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="forma" type="CollisionShape2D" parent="11/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 8.3416 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="12" type="Sprite" parent="." index="12"]
+
+editor/display_folded = true
+position = Vector2( 0, 128 )
+texture = ExtResource( 13 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="StaticBody2D" parent="12" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="forma" type="CollisionShape2D" parent="12/hitbox" index="0"]
+
+visible = false
+position = Vector2( 7.94344, 8.3416 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="13" type="Sprite" parent="." index="13"]
+
+editor/display_folded = true
+position = Vector2( 32, 128 )
+texture = ExtResource( 14 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="hitbox" type="StaticBody2D" parent="13" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="forma" type="CollisionShape2D" parent="13/hitbox" index="0"]
 
 visible = false
 position = Vector2( 7.94344, 8.3416 )

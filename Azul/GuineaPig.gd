@@ -28,11 +28,13 @@ enum diry {up, down, none}
 #Activadores venenos
 var veneno1 = false
 var veneno2 = false
-var veneno3 = true
+var veneno3 = false
 
 #Posicion del respawn más cercano
 var resx = 0
 var resy = 0
+
+var camera = false
 
 func _ready():
 	
@@ -46,6 +48,7 @@ func _physics_process(delta):
 	
 	#cozas DLC
 	if toxicity >= max_toxicity:
+		$Sound/Death.playing = true
 		set_modulate(enabled)
 		setpos(resx, resy)
 		toxicity = 0
@@ -57,6 +60,7 @@ func _physics_process(delta):
 	if timer > 0:
 		timer -= 1	
 	elif timer == 0:
+		$Hud/Group/J.set_modulate(enabled)
 		_reset()
 	
 	if timer3 > 0:
@@ -66,6 +70,7 @@ func _physics_process(delta):
 		set_modulate(enabled)
 		gosht_busters = false
 		timer3 = -1
+		$Hud/Group/J3.set_modulate(enabled)
 		
 	#Animate
 	animate()
@@ -98,14 +103,18 @@ func _input(event):                   #Cuando hagas el movimiento, solo asegurat
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = salto
+			$Sound/Jump.playing = true
 			
 	if Input.is_action_just_pressed("ui_act1") && veneno1:
+		$Sound/Poison.playing = true
 		veneno1()
 	
 	if Input.is_action_just_pressed("ui_act2") && veneno2:
+		$Sound/Poison.playing = true
 		veneno2()
 	
 	if Input.is_action_just_pressed("ui_act3") && veneno3:
+		$Sound/Poison.playing = true
 		veneno3()
 		
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -195,28 +204,36 @@ func veneno3():
 ###################################################################################################
 
 func _reset():                                       #reset de stats (veneno1)
-	
-	$Hud/Group/J.set_modulate(enabled)
 	salto = -150
 	gosht_busters = false
 	if is_on_floor():
 		vel = 42
-		motion.x = 0	
+		
+		if dirx == idle:
+			motion.x = 0
+		elif dirx == right && Input.is_action_pressed("ui_right"):
+			motion.x = vel
+		elif dirx == left  && Input.is_action_pressed("ui_left"):
+			motion.x = -vel
+	
 		timer = -1
 	pass
 ###################################################################################################
 
 func activate(veneno):                               #activadores para los venenos
-	if veneno == 1:
+	if veneno == 1 && !veneno1:
 		$Hud/Group/J.visible = true
 		$Hud/Group/Toxic.visible = true
 		veneno1 = true
-	elif veneno == 2:
+		$Sound/PoisonActivate.playing = true
+	elif veneno == 2 && !veneno2:
 		$Hud/Group/J2.visible = true
 		veneno2 = true
-	elif veneno == 3:
+		$Sound/PoisonActivate.playing = true
+	elif veneno == 3 && !veneno3:
 		$Hud/Group/J3.visible = true
 		veneno3 = true
+		$Sound/PoisonActivate.playing = true
 	pass
 	
 ############################################### RESPAWN ###################################################
@@ -234,11 +251,18 @@ func setpos(posx, posy):                            #Mueve el jugador a la posic
 
 
 func _on_dead_body_entered(body):                   #Impactas objeto caida
+	toxicity = 0
+	$Sound/Death.playing = true
 	setpos(resx, resy)
+	$Hud/Group/J.set_modulate(enabled)
+	$Hud/Group/J2.set_modulate(enabled)
+	$Hud/Group/J3.set_modulate(enabled)
+	_reset()
 	pass
 
 
 func _on_res00_body_entered(body):                  #Impactas respawner
+	toxicity = 0
 	resx = position.x
 	resy = position.y
 	pass
@@ -251,3 +275,9 @@ func barraupdater():
 	elif $Hud/Group/Toxic.value > toxicity:
 		$Hud/Group/Toxic.value -= 2
 	pass
+
+
+func _on_camera_body_entered(body):
+	if !camera:
+		$Camera2D.zoom = Vector2(0.25,0.25)
+	pass # replace with function body
