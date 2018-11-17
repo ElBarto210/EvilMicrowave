@@ -50,6 +50,9 @@ func _ready():
 func _physics_process(delta):
 	#cozas DLC
 	if toxicity >= max_toxicity:
+		$Hud/Group/J.set_modulate(enabled)
+		$Hud/Group/J2.set_modulate(enabled)
+		$Hud/Group/J3.set_modulate(enabled)
 		$Sound/Death.playing = true
 		set_modulate(enabled)
 		setpos(resx, resy)
@@ -188,7 +191,7 @@ func veneno1():                                      #Venenos
 func veneno2():
 	$Hud/Group/J2.set_modulate(disabled)
 	v2apl = true
-	toxicity += 5
+	toxicity += 3
 	pass
 	
 func veneno3():
