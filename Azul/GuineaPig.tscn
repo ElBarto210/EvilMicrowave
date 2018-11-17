@@ -1,26 +1,28 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://GuineaPig.gd" type="Script" id=1]
 [ext_resource path="res://textures/player_idle.png" type="Texture" id=2]
-[ext_resource path="res://textures/jumpdown2.png" type="Texture" id=3]
-[ext_resource path="res://textures/jumpdown.png" type="Texture" id=4]
-[ext_resource path="res://textures/player_01.png" type="Texture" id=5]
-[ext_resource path="res://textures/player_02.png" type="Texture" id=6]
-[ext_resource path="res://textures/jumpup.png" type="Texture" id=7]
-[ext_resource path="res://textures/jumpup2.png" type="Texture" id=8]
-[ext_resource path="res://textures/hud/Icon.2_60.png" type="Texture" id=9]
-[ext_resource path="res://textures/hud/j.png" type="Texture" id=10]
-[ext_resource path="res://textures/hud/Icon.2_69.png" type="Texture" id=11]
-[ext_resource path="res://textures/hud/k.png" type="Texture" id=12]
-[ext_resource path="res://textures/hud/Icon.4_75.png" type="Texture" id=13]
-[ext_resource path="res://textures/hud/l.png" type="Texture" id=14]
-[ext_resource path="res://textures/hud/bar2.png" type="Texture" id=15]
-[ext_resource path="res://textures/hud/bar.png" type="Texture" id=16]
-[ext_resource path="res://sound/jump.wav" type="AudioStream" id=17]
-[ext_resource path="res://sound/death.wav" type="AudioStream" id=18]
-[ext_resource path="res://sound/powerup.wav" type="AudioStream" id=19]
-[ext_resource path="res://sound/poison.wav" type="AudioStream" id=20]
-[ext_resource path="res://sound/Prueba1.wav" type="AudioStream" id=21]
+[ext_resource path="res://textures/colgado.png" type="Texture" id=3]
+[ext_resource path="res://textures/jumpdown2.png" type="Texture" id=4]
+[ext_resource path="res://textures/jumpdown.png" type="Texture" id=5]
+[ext_resource path="res://textures/player_01.png" type="Texture" id=6]
+[ext_resource path="res://textures/player_02.png" type="Texture" id=7]
+[ext_resource path="res://textures/jumpup.png" type="Texture" id=8]
+[ext_resource path="res://textures/jumpup2.png" type="Texture" id=9]
+[ext_resource path="res://textures/colgado2.png" type="Texture" id=10]
+[ext_resource path="res://textures/hud/Icon.2_60.png" type="Texture" id=11]
+[ext_resource path="res://textures/hud/j.png" type="Texture" id=12]
+[ext_resource path="res://textures/hud/Icon.2_69.png" type="Texture" id=13]
+[ext_resource path="res://textures/hud/k.png" type="Texture" id=14]
+[ext_resource path="res://textures/hud/Icon.4_75.png" type="Texture" id=15]
+[ext_resource path="res://textures/hud/l.png" type="Texture" id=16]
+[ext_resource path="res://textures/hud/bar2.png" type="Texture" id=17]
+[ext_resource path="res://textures/hud/bar.png" type="Texture" id=18]
+[ext_resource path="res://sound/jump.wav" type="AudioStream" id=19]
+[ext_resource path="res://sound/death.wav" type="AudioStream" id=20]
+[ext_resource path="res://sound/powerup.wav" type="AudioStream" id=21]
+[ext_resource path="res://sound/poison.wav" type="AudioStream" id=22]
+[ext_resource path="res://sound/Prueba1.wav" type="AudioStream" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -30,26 +32,36 @@ animations = [ {
 "name": "default",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "colgado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "jumpdown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "run",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "jumpup",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "colgado2",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 2.36137, 1.84169 )
+extents = Vector2( 1.75593, 2.56779 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 
@@ -57,7 +69,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 100, 10 )
 margin_left = 0.0
 margin_right = 0.0
@@ -76,7 +88,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 16 )
+texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 100, 10 )
 margin_left = 0.0
 margin_right = 0.0
@@ -89,7 +101,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 159.575, 108.963 )
 input_pickable = false
@@ -158,9 +170,11 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( -0.5, 9 )
+visible = false
+position = Vector2( -1.5, 9 )
+rotation = 1.5708
 scale = Vector2( 3.11538, 3 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Hud" type="CanvasLayer" parent="." index="4"]
@@ -174,7 +188,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Group" type="Control" parent="Hud" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -192,14 +205,14 @@ editor/display_folded = true
 visible = false
 position = Vector2( 59.625, 59.687 )
 scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 9 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="l" type="Sprite" parent="Hud/Group/J" index="0"]
 
 position = Vector2( -0.755615, 310.932 )
 scale = Vector2( 3.46873, 3.39758 )
-texture = ExtResource( 10 )
+texture = ExtResource( 12 )
 
 [node name="J2" type="Sprite" parent="Hud/Group" index="1"]
 
@@ -207,14 +220,14 @@ editor/display_folded = true
 visible = false
 position = Vector2( 132.625, 59.687 )
 scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="l3" type="Sprite" parent="Hud/Group/J2" index="0"]
 
 position = Vector2( 1.88037, 302.787 )
 scale = Vector2( 3.63129, 3.68396 )
-texture = ExtResource( 12 )
+texture = ExtResource( 14 )
 
 [node name="J3" type="Sprite" parent="Hud/Group" index="2"]
 
@@ -222,14 +235,14 @@ editor/display_folded = true
 visible = false
 position = Vector2( 203.625, 59.687 )
 scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 13 )
+texture = ExtResource( 15 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="l2" type="Sprite" parent="Hud/Group/J3" index="0"]
 
 position = Vector2( 3.21899, 297.928 )
 scale = Vector2( 3.63129, 3.68396 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 
 [node name="Toxic" type="ProgressBar" parent="Hud/Group" index="3"]
 
@@ -262,25 +275,9 @@ _sections_unfolded = [ "Percent", "Visibility", "custom_styles" ]
 
 [node name="Sound" type="Node" parent="." index="5"]
 
+editor/display_folded = true
+
 [node name="Jump" type="AudioStreamPlayer" parent="Sound" index="0"]
-
-stream = ExtResource( 17 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="Death" type="AudioStreamPlayer" parent="Sound" index="1"]
-
-stream = ExtResource( 18 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="Poison" type="AudioStreamPlayer" parent="Sound" index="2"]
 
 stream = ExtResource( 19 )
 volume_db = 0.0
@@ -289,7 +286,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="PoisonActivate" type="AudioStreamPlayer" parent="Sound" index="3"]
+[node name="Death" type="AudioStreamPlayer" parent="Sound" index="1"]
 
 stream = ExtResource( 20 )
 volume_db = 0.0
@@ -298,9 +295,27 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Song" type="AudioStreamPlayer" parent="Sound" index="4"]
+[node name="Poison" type="AudioStreamPlayer" parent="Sound" index="2"]
 
 stream = ExtResource( 21 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="PoisonActivate" type="AudioStreamPlayer" parent="Sound" index="3"]
+
+stream = ExtResource( 22 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Song" type="AudioStreamPlayer" parent="Sound" index="4"]
+
+stream = ExtResource( 23 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false

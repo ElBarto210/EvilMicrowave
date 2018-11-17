@@ -8,7 +8,7 @@ var enabled = Color(1,1,1,1)
 export var normal = Vector2(0, -1)
 export var grav = 10
 export var vel = 42
-export var salto = -160
+export var salto = -185
 export var toxicity = 0
 export var max_toxicity = 100
 var timer = -1
@@ -20,7 +20,10 @@ var prev3 = Vector2(0, 0)
 var cantp = true
 var respawn = Vector2()
 var gosht_busters = false
+var colgado = false
 
+var v2apl = false
+var sprite = false
 #Animaciones
 enum dirx {right, left, idle}
 enum diry {up, down, none}
@@ -45,7 +48,6 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	
 	#cozas DLC
 	if toxicity >= max_toxicity:
 		$Sound/Death.playing = true
@@ -77,9 +79,11 @@ func _physics_process(delta):
 	setypos()
 	
 	#Movement
-	motion.y += grav
-	motion = move_and_slide(motion, normal)
-	
+	colgado()
+	if !colgado:
+		motion.y += grav
+		motion = move_and_slide(motion, normal)
+
 	#Barra
 	barraupdater()
 	pass
@@ -148,28 +152,28 @@ func setypos():                                    #Cambia el estado de direcci√
 	pass
 
 func animate():                                      #Animaciones
-
-	if is_on_floor():
-		if motion.x == 0:
-			dirx = idle
-		diry = none
+	if !colgado:
+		if is_on_floor():
+			if motion.x == 0:
+				dirx = idle
+			diry = none
+			if dirx != idle:
+				$Anim.play("run")
+		else:
+			if diry == up:
+				$Anim.play("jumpup")
+			elif diry == down:
+				$Anim.play("jumpdown")
+				
 		if dirx != idle:
-			$Anim.play("run")
-	else:
-		if diry == up:
-			$Anim.play("jumpup")
-		elif diry == down:
-			$Anim.play("jumpdown")
-			
-	if dirx != idle:
-		if dirx == left:
-			$Anim.flip_h = true
-		elif dirx == right:
-			$Anim.flip_h = false	
-	else:
-		if diry == none:
-			$Anim.play("default")
-	pass
+			if dirx == left:
+				$Anim.flip_h = true
+			elif dirx == right:
+				$Anim.flip_h = false	
+		else:
+			if diry == none:
+				$Anim.play("default")
+		pass
 	
 ###################################################################################################
 
@@ -183,6 +187,8 @@ func veneno1():                                      #Venenos
 	
 func veneno2():
 	$Hud/Group/J2.set_modulate(disabled)
+	v2apl = true
+	toxicity += 5
 	pass
 	
 func veneno3():
@@ -204,7 +210,7 @@ func veneno3():
 ###################################################################################################
 
 func _reset():                                       #reset de stats (veneno1)
-	salto = -150
+	salto = -170
 	gosht_busters = false
 	if is_on_floor():
 		vel = 42
@@ -271,9 +277,9 @@ func _on_res00_body_entered(body):                  #Impactas respawner
 
 func barraupdater():
 	if $Hud/Group/Toxic.value < toxicity:
-		$Hud/Group/Toxic.value += 2
+		$Hud/Group/Toxic.value += 1
 	elif $Hud/Group/Toxic.value > toxicity:
-		$Hud/Group/Toxic.value -= 2
+		$Hud/Group/Toxic.value -= 1
 	pass
 
 
@@ -281,3 +287,40 @@ func _on_camera_body_entered(body):
 	if !camera:
 		$Camera2D.zoom = Vector2(0.25,0.25)
 	pass # replace with function body
+
+
+
+func _on_resquicio00_body_entered(body):
+	if body.name == "Player":
+		if v2apl:
+			colgado = true
+			$Anim.play("colgado")
+	pass
+
+func colgado():
+
+	if colgado:
+		if Input.is_action_just_pressed("ui_act2"):
+			colgado = false
+			motion.y = salto
+			v2apl = false
+		elif Input.is_action_just_pressed("ui_up"):
+			toxicity += 1
+			motion.y = salto
+			motion = move_and_slide(motion, normal)
+			if !sprite:
+				$Anim.play("colgado2")
+				sprite = true
+			else: 
+				sprite = false
+				$Anim.play("colgado")
+	pass
+
+
+func _on_resquicio00_body_exited(body):
+	if body.name == "Player":
+		if colgado:
+			colgado = false
+			v2apl = false
+			$Hud/Group/J2.set_modulate(enabled)
+	pass
