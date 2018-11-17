@@ -1,8 +1,8 @@
-extends Area2D
+extends StaticBody2D
 
 
-func _on_boton00_body_entered(body):
-	$cuerpo/hitbox.disabled = true
-	$Sprite.visible = false
-	$Sound.playing = true
+
+func _on_boon00_body_entered(body):
+	$puerta.visible = false
+	$hitbox.disabled = true
 	pass # replace with function body

@@ -223,6 +223,7 @@ func _reset():                                       #reset de stats (veneno1)
 			motion.x = -vel
 	
 		timer = -1
+		
 	pass
 ###################################################################################################
 
@@ -264,6 +265,9 @@ func _on_dead_body_entered(body):                   #Impactas objeto caida
 	$Hud/Group/J2.set_modulate(enabled)
 	$Hud/Group/J3.set_modulate(enabled)
 	_reset()
+	colgado = false
+	v2apl = false
+	$Hud/Group/J2.set_modulate(enabled)
 	pass
 
 
@@ -304,6 +308,7 @@ func colgado():
 			colgado = false
 			motion.y = salto
 			v2apl = false
+			$Hud/Group/J2.set_modulate(enabled)
 		elif Input.is_action_just_pressed("ui_up"):
 			toxicity += 1
 			motion.y = salto

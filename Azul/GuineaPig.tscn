@@ -5,11 +5,11 @@
 [ext_resource path="res://textures/colgado.png" type="Texture" id=3]
 [ext_resource path="res://textures/jumpdown2.png" type="Texture" id=4]
 [ext_resource path="res://textures/jumpdown.png" type="Texture" id=5]
-[ext_resource path="res://textures/player_01.png" type="Texture" id=6]
-[ext_resource path="res://textures/player_02.png" type="Texture" id=7]
-[ext_resource path="res://textures/jumpup.png" type="Texture" id=8]
-[ext_resource path="res://textures/jumpup2.png" type="Texture" id=9]
-[ext_resource path="res://textures/colgado2.png" type="Texture" id=10]
+[ext_resource path="res://textures/jumpup.png" type="Texture" id=6]
+[ext_resource path="res://textures/jumpup2.png" type="Texture" id=7]
+[ext_resource path="res://textures/colgado2.png" type="Texture" id=8]
+[ext_resource path="res://textures/player_01.png" type="Texture" id=9]
+[ext_resource path="res://textures/player_02.png" type="Texture" id=10]
 [ext_resource path="res://textures/hud/Icon.2_60.png" type="Texture" id=11]
 [ext_resource path="res://textures/hud/j.png" type="Texture" id=12]
 [ext_resource path="res://textures/hud/Icon.2_69.png" type="Texture" id=13]
@@ -44,24 +44,24 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "run",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
 "name": "jumpup",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": false,
 "name": "colgado2",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 1.75593, 2.56779 )
+extents = Vector2( 1.75593, 2.14191 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 
@@ -101,7 +101,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 159.575, 108.963 )
 input_pickable = false
@@ -170,11 +170,10 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-visible = false
-position = Vector2( -1.5, 9 )
+position = Vector2( -1.03606, 9 )
 rotation = 1.5708
 scale = Vector2( 3.11538, 3 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Hud" type="CanvasLayer" parent="." index="4"]
